@@ -1,0 +1,75 @@
+---
+layout: layouts/base.liquid
+title: The Blog
+pagination:
+  data: collections.posts
+  size: 6
+  alias: posts
+  reverse: true
+---
+
+<div class="relative max-w-7xl mx-auto">
+  <div class="relative px-4 sm:px-6 lg:px-8">
+    <h1 class="mt-6 text-4xl font-extrabold text-gray-900"> {{title}} </h1>
+
+    <div class="mt-6 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
+      {% for post in posts %}
+        <div class=" mt-6 flex flex-col rounded-lg shadow-lg overflow-hidden">
+        <div class="flex-shrink-0">
+          <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" alt="">
+        </div>
+        <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+          <div class="flex-1">
+            <p class="text-sm font-medium text-blue-600">
+              <a href="#" class="hover:underline">
+                Article
+              </a>
+            </p>
+            <a href="{{post.url | url }}" class="block mt-2">
+              <p class="text-xl font-semibold text-gray-900">
+                {{post.data.title}}
+              </p>
+              <p class="mt-3 text-base text-gray-500">
+                {{post.data.description}}
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <nav class="mt-12 border-t border-gray-200 px-4 flex items-center justify-between sm:px-0">
+      <div class="-mt-px w-0 flex-1 flex">
+        {% if pagination.href.previous %}
+        <a href="{{ pagination.href.previous }}" class="border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+          <!-- Heroicon name: solid/arrow-narrow-left -->
+          <svg class="mr-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+          </svg>
+          Previous
+        </a>
+        {% endif %}
+      </div>
+      <div class="hidden md:-mt-px md:flex">
+
+      </div>
+      <div class="-mt-px w-0 flex-1 flex justify-end">
+        {% if pagination.href.next %}
+        <a href="{{ pagination.href.next }}" class="border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+          Next
+          <!-- Heroicon name: solid/arrow-narrow-right -->
+          <svg class="ml-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+        {% endif %}
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+
+
+
